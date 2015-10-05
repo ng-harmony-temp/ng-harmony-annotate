@@ -1,6 +1,6 @@
 {
   "name": "ng-harmony-annotate",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Angular 2.0 like annotations",
   "main": "./dist/es5/system_module.js",
   "scripts": {
@@ -38,5 +38,12 @@
     "babel": "^5.1.10",
     "js-beautify": "^1.5.5",
     "literate-programming": "^0.8.4"
+  },
+  "jspm": {
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
   }
 }
