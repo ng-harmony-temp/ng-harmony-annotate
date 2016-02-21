@@ -1,66 +1,57 @@
-# Ng-Harmony-Annotate
-=====================
+![Harmony = 6 + 7;](src/logo.png "Harmony - Fire in my eyes")
 
-[![Join the chat at https://gitter.im/ng-harmony/ng-harmony](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ng-harmony/ng_harmony?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-## Concept
+## Synopsis
 
 A (sample) ES7-proposal (babel-feature) annotation collection mimicking the upcoming Angular 2.0 code-style.
 Write your own, contribute, and feel like a hero ... it's easy!
 
-Use:
-* [literate-programming](http://npmjs.org/packages/literate-programming "click for npm-package-homepage") to write markdown-flavored literate JS, HTML and CSS
-* [jspm](https://www.npmjs.com/package/jspm "click for npm-package-homepage") for a nice solution to handle npm-modules with ES6-Module-Format-Loading ...
+I'm about to battle test the code ... when done I'll come up with samples here and integrate in ng-harmony.github.io/ng-harmony demo todomvc-site ...
 
-* * *
-
-## Files
-
-This serves as literate-programming compiler-directive
-
-[dist/raw/ng_harmony_annotate.js](#Compilation "save:| jstidy")
-
-## Compilation
-
-To Compile this package please run `npm run all` from a proper shell;
-
-The Decorator foos are annotation-driving translators that allow you to use Angular 2.0 like styles!
+## Code Example
 
 ```javascript
-    export function Directive(val) {
-        return function decorator(target) {
-            angular.module(val.module).directive(val.selector, () => {
-                return {
-                    controller: target,
-                    restrict: val.restrict || "A",
-                    replace: val.replace || false,
-                    templateUrl: val.templateUrl || null,
-                    template: val.template || null,
-                    scope: val.scope === true ? {} : (val.scope || null)
-                };
-            })
-        }
-    }
-
-    export function Controller(val) {
-        return function decorator(target) {
-            let r = {};
-            r[val.module] = {
-                type: "controller",
-                name: val.name
-            }
-            target.$register = r;
-        }
-    }
-
-    export function Service(val) {
-        return function decorator(target) {
-            let r = {};
-            r[val.module] = {
-                type: "service",
-                name: val.name
-            }
-            target.$register = r;
-        }
-    }
+import { Controller, Service } from "ng-harmony/ng-harmony";
+import { SomeUtilityClass, OtherUtilityClass} from "my-org/my-repo";
 ```
+
+We can use this lib in such a way *[...]*
+
+```javascript
+class YourThingy extends Controller.mixin(SomeUtilityClass, OtherUtilityClass) {
+```
+
+## Motivation
+
+* I wanted to be part of this because I liked it
+* I am a secret agent and want to test my superpowers
+* I had this idea ...
+* I want to stick with Angular 1 for now and missed this feature
+
+## Installation
+
+I recommend the usage of jspm.
+This way, just base your project upon jspm and start using this lib as in the code example above.
+
+```bash
+jspm i github:ng-harmony/...
+```
+
+## API Reference
+
+### `MyMainUtil` (Root-Class)
+
+`myMethod`: that's a foo figther
+`myOtherMethod`: that's just a bar of gold
+
+
+### `MyOtherUtil`
+
+`digest`: my stomach is full, too much pizzs, should have left it for the cat
+
+## Contributors
+
+Drop me an email at <you> at <your-email-provider> dot <domain>
+
+## License
+
+MIT
