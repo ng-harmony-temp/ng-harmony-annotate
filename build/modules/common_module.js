@@ -1,4 +1,4 @@
-export function Directive(val) {
+export function Component(val) {
     return function decorator(target) {
         angular.module(val.module).directive(val.selector, () => {
             return {
@@ -21,6 +21,7 @@ export function Controller(val) {
             name: val.name
         };
         target.$register = r;
+        target.$inject = val.deps;
     };
 }
 
@@ -32,6 +33,7 @@ export function Service(val) {
             name: val.name
         };
         target.$register = r;
+        target.$inject = deps;
     };
 }
 
