@@ -21,7 +21,9 @@
                 name: val.name
             }
             target.$register = r;
-            target.$inject = val.deps;
+            if (val.deps !== null && typeof val.deps !== "undefined") {
+                target.$inject = val.deps;
+            }
         }
     }
 
@@ -33,6 +35,8 @@
                 name: val.name
             }
             target.$register = r;
-            target.$inject = val.deps;
+            if (val.deps !== null && typeof val.deps !== "undefined") {
+                target.$inject = val.deps;
+            }
         }
     }
