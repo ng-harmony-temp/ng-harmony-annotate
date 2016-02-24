@@ -53,7 +53,9 @@ The Decorator foos are annotation-driving translators that allow you to use Angu
                 name: val.name
             }
             target.$register = r;
-            target.$inject = val.deps;
+            if (val.deps !== null && typeof val.deps !== "undefined") {
+                target.$inject = val.deps;
+            }
         }
     }
 
@@ -65,7 +67,9 @@ The Decorator foos are annotation-driving translators that allow you to use Angu
                 name: val.name
             }
             target.$register = r;
-            target.$inject = val.deps;
+            if (val.deps !== null && typeof val.deps !== "undefined") {
+                target.$inject = val.deps;
+            }
         }
     }
 ```
