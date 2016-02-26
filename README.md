@@ -5,7 +5,9 @@
 A (sample) ES7-proposal (babel-feature) annotation collection mimicking the upcoming Angular 2.0 code-style.
 Write your own, contribute, and feel like a hero ... it's easy!
 
-I'm about to battle test the code ... when done I'll come up with samples here and integrate in ng-harmony.github.io/ng-harmony demo todomvc-site ...
+~~I'm about to battle test the code ... when done I'll come up with samples here and integrate in ng-harmony.github.io/ng-harmony demo todomvc-site ...~~
+
+Roughly tested, considered beta now ... on hands on how to see gh-pages todomvc demo of ng-harmony/ng-harmony
 
 ## Code Example
 
