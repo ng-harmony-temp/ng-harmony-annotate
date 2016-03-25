@@ -72,11 +72,30 @@ The Decorator foos are annotation-driving translators that allow you to use Angu
 			}
 		}
 	}
+```
 
+Transient([{
+	css: "body > myContainer > myComponent:nth-child(3)",
+	uid: "MyContainer.MyComponent3"
+}, {
+	css: "body > .easilySelectable",
+	uid: "EasilySelectable"
+}])
+
+```javascript
 	export function Transient(val) {
 		return function decorator(target) {
 			target.LISTENERS = val;
-			target.TRANSIENT = true;
+		}
+	}
+```
+
+class A extends @Mixin([B, C]) class Z
+
+```
+	export function Mixin(val) {
+		return function decorator(target) {
+			target.mixin(...val);
 		}
 	}
 ```
