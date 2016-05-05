@@ -32,16 +32,29 @@ The Decorator foos are annotation-driving translators that allow you to use Angu
 ```javascript
 	export function Component(val) {
 		return function decorator(target) {
+			if (typeof val.ctrl !== "undefined" && val.ctrl !== null) {
+				let r = {};
+				r[val.module] = {
+					type: "controller",
+					name: val.ctrl
+				}
+				target.$register = r;
+				if (val.deps !== null && typeof val.deps !== "undefined") {
+					target.$inject = val.deps;
+				}
+			}
+			let mod = angular.module(val.module) || angular.module(val.module, []);
 			angular.module(val.module).directive(val.selector, () => {
 				return {
-					controller: target,
+					controller: val.ctrl || target,
 					restrict: val.restrict || "A",
 					replace: val.replace || false,
 					templateUrl: val.templateUrl || null,
 					template: val.template || null,
 					scope: val.scope === true ? {} : (val.scope || null)
-				};
-			})
+				}
+			});
+
 		}
 	}
 
@@ -92,7 +105,7 @@ Transient([{
 
 class A extends @Mixin([B, C]) class Z
 
-```
+```javascript
 	export function Mixin(val) {
 		return function decorator(target) {
 			target.mixin(...val);
