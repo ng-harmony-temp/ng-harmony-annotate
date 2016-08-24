@@ -1,18 +1,12 @@
 	export function Component(val) {
 		return function decorator(target) {
-			if (typeof val.ctrl !== "undefined" && val.ctrl !== null) {
-				let r = {};
-				r[val.module] = {
-					type: "controller",
-					name: val.ctrl
-				}
-				target.$register = r;
+			if (typeof val.ctrl === "undefined") {
 				if (val.deps !== null && typeof val.deps !== "undefined") {
 					target.$inject = val.deps;
 				}
 			}
 			let mod = angular.module(val.module) || angular.module(val.module, []);
-			angular.module(val.module).directive(val.selector, () => {
+			mod.directive(val.selector, () => {
 				return {
 					controller: val.ctrl || target,
 					restrict: val.restrict || "A",

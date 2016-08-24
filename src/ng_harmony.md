@@ -32,19 +32,13 @@ The Decorator foos are annotation-driving translators that allow you to use Angu
 ```javascript
 	export function Component(val) {
 		return function decorator(target) {
-			if (typeof val.ctrl !== "undefined" && val.ctrl !== null) {
-				let r = {};
-				r[val.module] = {
-					type: "controller",
-					name: val.ctrl
-				}
-				target.$register = r;
+			if (typeof val.ctrl === "undefined") {
 				if (val.deps !== null && typeof val.deps !== "undefined") {
 					target.$inject = val.deps;
 				}
 			}
 			let mod = angular.module(val.module) || angular.module(val.module, []);
-			angular.module(val.module).directive(val.selector, () => {
+			mod.directive(val.selector, () => {
 				return {
 					controller: val.ctrl || target,
 					restrict: val.restrict || "A",
@@ -114,6 +108,6 @@ class A extends @Mixin([B, C]) class Z
 ```
 
 ## CHANGELOG
-
-*v0.1.9* Battle Testing and Debugging on the way
+*v0.2.2* Bugfix in Component (Logic)
 *v0.1.10* Renaming decision of directive to component
+*v0.1.9* Battle Testing and Debugging on the way
